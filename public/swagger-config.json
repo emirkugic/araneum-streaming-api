@@ -3,11 +3,7 @@
     "info": {
         "title": "Streaming API",
         "version": "1.0.0",
-        "description": "API documentation for the Streaming application",
-        "contact": {
-            "name": "Streaming API",
-            "email": "support@streaming.araneum.ba"
-        }
+        "description": "API documentation for the Streaming application"
     },
     "servers": [
         {
@@ -26,9 +22,15 @@
         "schemas": {
             "User": {
                 "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "email"
+                ],
                 "properties": {
                     "id": {
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                     },
                     "name": {
@@ -37,6 +39,7 @@
                     },
                     "email": {
                         "type": "string",
+                        "format": "email",
                         "example": "john.doe@example.com"
                     },
                     "email_verified_at": {
@@ -59,6 +62,7 @@
                 "properties": {
                     "id": {
                         "type": "integer",
+                        "format": "int64",
                         "example": 1
                     },
                     "tmdb_id": {
@@ -92,6 +96,7 @@
                     },
                     "vote_average": {
                         "type": "number",
+                        "format": "float",
                         "example": 8.3
                     },
                     "vote_count": {
@@ -105,192 +110,6 @@
                     "is_upcoming": {
                         "type": "boolean",
                         "example": false
-                    },
-                    "genres": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Genre"
-                        }
-                    }
-                }
-            },
-            "TvShow": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "tmdb_id": {
-                        "type": "string",
-                        "example": "1399"
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Game of Thrones"
-                    },
-                    "slug": {
-                        "type": "string",
-                        "example": "game-of-thrones-1399"
-                    },
-                    "overview": {
-                        "type": "string",
-                        "example": "Seven noble families fight for control of the mythical land of Westeros..."
-                    },
-                    "poster_path": {
-                        "type": "string",
-                        "example": "/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg"
-                    },
-                    "backdrop_path": {
-                        "type": "string",
-                        "example": "/suopoADq0k8YZr4dQXcU6pToj6s.jpg"
-                    },
-                    "first_air_date": {
-                        "type": "string",
-                        "format": "date",
-                        "example": "2011-04-17"
-                    },
-                    "vote_average": {
-                        "type": "number",
-                        "example": 8.4
-                    },
-                    "vote_count": {
-                        "type": "integer",
-                        "example": 11345
-                    },
-                    "is_trending": {
-                        "type": "boolean",
-                        "example": true
-                    },
-                    "genres": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Genre"
-                        }
-                    }
-                }
-            },
-            "Genre": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "tmdb_id": {
-                        "type": "string",
-                        "example": "28"
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Action"
-                    },
-                    "type": {
-                        "type": "string",
-                        "example": "movie"
-                    }
-                }
-            },
-            "Episode": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "tv_show_id": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "tmdb_id": {
-                        "type": "string",
-                        "example": "123456"
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Winter Is Coming"
-                    },
-                    "overview": {
-                        "type": "string",
-                        "example": "Jon Arryn, the Hand of the King, is dead..."
-                    },
-                    "still_path": {
-                        "type": "string",
-                        "example": "/wrGWeW4WKxnaeA8sxJb2T9O6ryo.jpg"
-                    },
-                    "season_number": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "episode_number": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "air_date": {
-                        "type": "string",
-                        "format": "date",
-                        "example": "2011-04-17"
-                    }
-                }
-            },
-            "Error": {
-                "type": "object",
-                "properties": {
-                    "message": {
-                        "type": "string",
-                        "example": "Error message"
-                    },
-                    "errors": {
-                        "type": "object"
-                    }
-                }
-            },
-            "Pagination": {
-                "type": "object",
-                "properties": {
-                    "current_page": {
-                        "type": "integer",
-                        "example": 1
-                    },
-                    "data": {
-                        "type": "array",
-                        "items": {}
-                    },
-                    "first_page_url": {
-                        "type": "string"
-                    },
-                    "from": {
-                        "type": "integer"
-                    },
-                    "last_page": {
-                        "type": "integer"
-                    },
-                    "last_page_url": {
-                        "type": "string"
-                    },
-                    "links": {
-                        "type": "array",
-                        "items": {}
-                    },
-                    "next_page_url": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "path": {
-                        "type": "string"
-                    },
-                    "per_page": {
-                        "type": "integer"
-                    },
-                    "prev_page_url": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "to": {
-                        "type": "integer"
-                    },
-                    "total": {
-                        "type": "integer"
                     }
                 }
             }
@@ -365,7 +184,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "type": "object",
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -426,40 +250,17 @@
                         }
                     },
                     "401": {
-                        "description": "Invalid credentials",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Invalid login credentials"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
+                        "description": "Invalid credentials"
                     }
                 }
             }
         },
-        "/logout": {
+        "/admin/genres/refresh": {
             "post": {
                 "tags": [
-                    "Authentication"
+                    "Admin"
                 ],
-                "summary": "Logout the authenticated user",
+                "summary": "Refresh genres from TMDb",
                 "security": [
                     {
                         "bearerAuth": []
@@ -467,7 +268,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Logout successful",
+                        "description": "Genres updated successfully",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -475,7 +276,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Logged out successfully"
+                                            "example": "Genres updated successfully"
                                         }
                                     }
                                 }
@@ -485,12 +286,12 @@
                 }
             }
         },
-        "/user": {
-            "get": {
+        "/admin/movies/refresh-trending": {
+            "post": {
                 "tags": [
-                    "Authentication"
+                    "Admin"
                 ],
-                "summary": "Get authenticated user details",
+                "summary": "Refresh trending movies from TMDb",
                 "security": [
                     {
                         "bearerAuth": []
@@ -498,11 +299,17 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "User details",
+                        "description": "Trending movies updated",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/User"
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Trending movies updated"
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -510,45 +317,61 @@
                 }
             }
         },
-        "/movies": {
-            "get": {
+        "/admin/tv-shows/refresh-trending": {
+            "post": {
                 "tags": [
-                    "Movies"
+                    "Admin"
                 ],
-                "summary": "Get list of movies",
-                "parameters": [
+                "summary": "Refresh trending TV shows from TMDb",
+                "security": [
                     {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page number",
-                        "schema": {
-                            "type": "integer",
-                            "default": 1
-                        }
+                        "bearerAuth": []
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "List of movies",
+                        "description": "Trending TV shows updated",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "#/components/schemas/Pagination"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "data": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "$ref": "#/components/schemas/Movie"
-                                                    }
-                                                }
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Trending TV shows updated"
                                         }
-                                    ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/movies/refresh-upcoming": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Refresh upcoming movies from TMDb",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Upcoming movies updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Upcoming movies updated"
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -562,199 +385,21 @@
                     "Movies"
                 ],
                 "summary": "Get trending movies",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page number",
-                        "schema": {
-                            "type": "integer",
-                            "default": 1
-                        }
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "List of trending movies",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "#/components/schemas/Pagination"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "data": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "$ref": "#/components/schemas/Movie"
-                                                    }
-                                                }
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Movie"
                                             }
                                         }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/movies/upcoming": {
-            "get": {
-                "tags": [
-                    "Movies"
-                ],
-                "summary": "Get upcoming movies",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page number",
-                        "schema": {
-                            "type": "integer",
-                            "default": 1
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "List of upcoming movies",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "#/components/schemas/Pagination"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "data": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "$ref": "#/components/schemas/Movie"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/movies/{slug}": {
-            "get": {
-                "tags": [
-                    "Movies"
-                ],
-                "summary": "Get movie details by slug",
-                "parameters": [
-                    {
-                        "name": "slug",
-                        "in": "path",
-                        "required": true,
-                        "description": "Movie slug",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Movie details",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "#/components/schemas/Movie"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "sources": {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "vidsrc": {
-                                                            "type": "string",
-                                                            "example": "https://vidsrc.to/embed/movie/299534"
-                                                        },
-                                                        "2embed": {
-                                                            "type": "string",
-                                                            "example": "https://2embed.to/embed/movie/299534"
-                                                        }
-                                                    }
-                                                },
-                                                "credits": {
-                                                    "type": "object"
-                                                },
-                                                "videos": {
-                                                    "type": "object"
-                                                },
-                                                "similar": {
-                                                    "type": "object"
-                                                },
-                                                "recommendations": {
-                                                    "type": "object"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Movie not found"
-                    }
-                }
-            }
-        },
-        "/tv-shows": {
-            "get": {
-                "tags": [
-                    "TV Shows"
-                ],
-                "summary": "Get list of TV shows",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page number",
-                        "schema": {
-                            "type": "integer",
-                            "default": 1
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "List of TV shows",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "#/components/schemas/Pagination"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "data": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "$ref": "#/components/schemas/TvShow"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ]
+                                    }
                                 }
                             }
                         }
@@ -768,1286 +413,18 @@
                     "TV Shows"
                 ],
                 "summary": "Get trending TV shows",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "Page number",
-                        "schema": {
-                            "type": "integer",
-                            "default": 1
-                        }
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "List of trending TV shows",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "#/components/schemas/Pagination"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "data": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "$ref": "#/components/schemas/TvShow"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/tv-shows/{slug}": {
-            "get": {
-                "tags": [
-                    "TV Shows"
-                ],
-                "summary": "Get TV show details by slug",
-                "parameters": [
-                    {
-                        "name": "slug",
-                        "in": "path",
-                        "required": true,
-                        "description": "TV show slug",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "TV show details",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "allOf": [
-                                        {
-                                            "$ref": "#/components/schemas/TvShow"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "seasons": {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "object"
-                                                    }
-                                                },
-                                                "credits": {
-                                                    "type": "object"
-                                                },
-                                                "videos": {
-                                                    "type": "object"
-                                                },
-                                                "similar": {
-                                                    "type": "object"
-                                                },
-                                                "recommendations": {
-                                                    "type": "object"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "TV show not found"
-                    }
-                }
-            }
-        },
-        "/tv-shows/{slug}/season/{seasonNumber}": {
-            "get": {
-                "tags": [
-                    "TV Shows"
-                ],
-                "summary": "Get season details",
-                "parameters": [
-                    {
-                        "name": "slug",
-                        "in": "path",
-                        "required": true,
-                        "description": "TV show slug",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "seasonNumber",
-                        "in": "path",
-                        "required": true,
-                        "description": "Season number",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Season details",
-                        "content": {
-                            "application/json": {
-                                "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "tv_show": {
-                                            "$ref": "#/components/schemas/TvShow"
-                                        },
-                                        "season": {
-                                            "type": "object"
-                                        },
-                                        "episodes": {
+                                        "data": {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "#/components/schemas/Episode"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "TV show or season not found"
-                    }
-                }
-            }
-        },
-        "/tv-shows/{slug}/season/{seasonNumber}/episode/{episodeNumber}": {
-            "get": {
-                "tags": [
-                    "TV Shows"
-                ],
-                "summary": "Get episode details",
-                "parameters": [
-                    {
-                        "name": "slug",
-                        "in": "path",
-                        "required": true,
-                        "description": "TV show slug",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "seasonNumber",
-                        "in": "path",
-                        "required": true,
-                        "description": "Season number",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "episodeNumber",
-                        "in": "path",
-                        "required": true,
-                        "description": "Episode number",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Episode details",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "tv_show": {
-                                            "$ref": "#/components/schemas/TvShow"
-                                        },
-                                        "episode": {
-                                            "allOf": [
-                                                {
-                                                    "$ref": "#/components/schemas/Episode"
-                                                },
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "sources": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                                "vidsrc": {
-                                                                    "type": "string",
-                                                                    "example": "https://vidsrc.to/embed/tv/1399/1/1"
-                                                                },
-                                                                "2embed": {
-                                                                    "type": "string",
-                                                                    "example": "https://2embed.to/embed/series/1399/1/1"
-                                                                }
-                                                            }
-                                                        },
-                                                        "credits": {
-                                                            "type": "object"
-                                                        },
-                                                        "images": {
-                                                            "type": "object"
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "TV show, season, or episode not found"
-                    }
-                }
-            }
-        },
-        "/genres": {
-            "get": {
-                "tags": [
-                    "Genres"
-                ],
-                "summary": "Get all genres",
-                "responses": {
-                    "200": {
-                        "description": "List of genres",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Genre"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/genres/{type}": {
-            "get": {
-                "tags": [
-                    "Genres"
-                ],
-                "summary": "Get genres by type",
-                "parameters": [
-                    {
-                        "name": "type",
-                        "in": "path",
-                        "required": true,
-                        "description": "Genre type (movie or tv)",
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "movie",
-                                "tv"
-                            ]
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "List of genres",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/Genre"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/genre/{id}": {
-            "get": {
-                "tags": [
-                    "Genres"
-                ],
-                "summary": "Get genre details",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "description": "Genre ID",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Genre details with related movies and TV shows",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "genre": {
-                                            "$ref": "#/components/schemas/Genre"
-                                        },
-                                        "movies": {
-                                            "allOf": [
-                                                {
-                                                    "$ref": "#/components/schemas/Pagination"
-                                                },
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "data": {
-                                                            "type": "array",
-                                                            "items": {
-                                                                "$ref": "#/components/schemas/Movie"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        "tv_shows": {
-                                            "allOf": [
-                                                {
-                                                    "$ref": "#/components/schemas/Pagination"
-                                                },
-                                                {
-                                                    "type": "object",
-                                                    "properties": {
-                                                        "data": {
-                                                            "type": "array",
-                                                            "items": {
-                                                                "$ref": "#/components/schemas/TvShow"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Genre not found"
-                    }
-                }
-            }
-        },
-        "/search": {
-            "get": {
-                "tags": [
-                    "Search"
-                ],
-                "summary": "Search for movies and TV shows",
-                "parameters": [
-                    {
-                        "name": "query",
-                        "in": "query",
-                        "required": true,
-                        "description": "Search query",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Search results",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "movies": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/Movie"
-                                            }
-                                        },
-                                        "tv_shows": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/TvShow"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/watchlist": {
-            "get": {
-                "tags": [
-                    "Watchlist"
-                ],
-                "summary": "Get user's watchlist",
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "User's watchlist",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "movies": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/Movie"
-                                            }
-                                        },
-                                        "tv_shows": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/TvShow"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/watchlist/add": {
-            "post": {
-                "tags": [
-                    "Watchlist"
-                ],
-                "summary": "Add item to watchlist",
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "required": [
-                                    "type",
-                                    "id"
-                                ],
-                                "properties": {
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "movie",
-                                            "tv"
-                                        ],
-                                        "example": "movie"
-                                    },
-                                    "id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Item added to watchlist",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Movie added to watchlist"
-                                        },
-                                        "favorite_item": {
-                                            "type": "object"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Item not found"
-                    }
-                }
-            }
-        },
-        "/watchlist/remove": {
-            "post": {
-                "tags": [
-                    "Watchlist"
-                ],
-                "summary": "Remove item from watchlist",
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "required": [
-                                    "type",
-                                    "id"
-                                ],
-                                "properties": {
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "movie",
-                                            "tv"
-                                        ],
-                                        "example": "movie"
-                                    },
-                                    "id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Item removed from watchlist",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Item removed from watchlist"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Item not found in watchlist"
-                    }
-                }
-            }
-        },
-        "/watchlist/check": {
-            "post": {
-                "tags": [
-                    "Watchlist"
-                ],
-                "summary": "Check if item is in watchlist",
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "required": [
-                                    "type",
-                                    "id"
-                                ],
-                                "properties": {
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "movie",
-                                            "tv"
-                                        ],
-                                        "example": "movie"
-                                    },
-                                    "id": {
-                                        "type": "integer",
-                                        "example": 1
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Check result",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "in_watchlist": {
-                                            "type": "boolean"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/favorites": {
-            "get": {
-                "tags": [
-                    "Favorites"
-                ],
-                "summary": "Get user's favorites",
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "User's favorites",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "movies": {
-                                            "type": "array",
-                                            "items": {
-                                                "$ref": "#/components/schemas/Movie"
-                                            },
-                                            "movies": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#/components/schemas/Movie"
-                                                }
-                                            },
-                                            "tv_shows": {
-                                                "type": "array",
-                                                "items": {
-                                                    "$ref": "#/components/schemas/TvShow"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/favorites/add": {
-                "post": {
-                    "tags": [
-                        "Favorites"
-                    ],
-                    "summary": "Add item to favorites",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "type",
-                                        "id"
-                                    ],
-                                    "properties": {
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "movie",
-                                                "tv"
-                                            ],
-                                            "example": "movie"
-                                        },
-                                        "id": {
-                                            "type": "integer",
-                                            "example": 1
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "Item added to favorites",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "message": {
-                                                "type": "string",
-                                                "example": "Movie added to favorites"
-                                            },
-                                            "favorite_item": {
                                                 "type": "object"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "404": {
-                            "description": "Item not found"
-                        }
-                    }
-                }
-            },
-            "/favorites/remove": {
-                "post": {
-                    "tags": [
-                        "Favorites"
-                    ],
-                    "summary": "Remove item from favorites",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "type",
-                                        "id"
-                                    ],
-                                    "properties": {
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "movie",
-                                                "tv"
-                                            ],
-                                            "example": "movie"
-                                        },
-                                        "id": {
-                                            "type": "integer",
-                                            "example": 1
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "Item removed from favorites",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "message": {
-                                                "type": "string",
-                                                "example": "Item removed from favorites"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "404": {
-                            "description": "Item not found in favorites"
-                        }
-                    }
-                }
-            },
-            "/favorites/check": {
-                "post": {
-                    "tags": [
-                        "Favorites"
-                    ],
-                    "summary": "Check if item is in favorites",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "type",
-                                        "id"
-                                    ],
-                                    "properties": {
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "movie",
-                                                "tv"
-                                            ],
-                                            "example": "movie"
-                                        },
-                                        "id": {
-                                            "type": "integer",
-                                            "example": 1
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "Check result",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "in_favorites": {
-                                                "type": "boolean"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/watch-history": {
-                "get": {
-                    "tags": [
-                        "Watch History"
-                    ],
-                    "summary": "Get user's watch history",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "responses": {
-                        "200": {
-                            "description": "User's watch history",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "movies": {
-                                                "type": "array",
-                                                "items": {
-                                                    "allOf": [
-                                                        {
-                                                            "$ref": "#/components/schemas/Movie"
-                                                        },
-                                                        {
-                                                            "type": "object",
-                                                            "properties": {
-                                                                "progress": {
-                                                                    "type": "integer"
-                                                                },
-                                                                "completed": {
-                                                                    "type": "boolean"
-                                                                },
-                                                                "last_watched": {
-                                                                    "type": "string",
-                                                                    "format": "date-time"
-                                                                }
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            },
-                                            "episodes": {
-                                                "type": "array",
-                                                "items": {
-                                                    "allOf": [
-                                                        {
-                                                            "$ref": "#/components/schemas/Episode"
-                                                        },
-                                                        {
-                                                            "type": "object",
-                                                            "properties": {
-                                                                "tv_show": {
-                                                                    "$ref": "#/components/schemas/TvShow"
-                                                                },
-                                                                "progress": {
-                                                                    "type": "integer"
-                                                                },
-                                                                "completed": {
-                                                                    "type": "boolean"
-                                                                },
-                                                                "last_watched": {
-                                                                    "type": "string",
-                                                                    "format": "date-time"
-                                                                }
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/watch-history/update": {
-                "post": {
-                    "tags": [
-                        "Watch History"
-                    ],
-                    "summary": "Update watch progress",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "type",
-                                        "id",
-                                        "progress",
-                                        "completed"
-                                    ],
-                                    "properties": {
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "movie",
-                                                "episode"
-                                            ],
-                                            "example": "movie"
-                                        },
-                                        "id": {
-                                            "type": "integer",
-                                            "example": 1
-                                        },
-                                        "progress": {
-                                            "type": "integer",
-                                            "example": 300
-                                        },
-                                        "completed": {
-                                            "type": "boolean",
-                                            "example": false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "Watch history updated",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "message": {
-                                                "type": "string",
-                                                "example": "Movie watch history updated"
-                                            },
-                                            "history_item": {
-                                                "type": "object"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "404": {
-                            "description": "Item not found"
-                        }
-                    }
-                }
-            },
-            "/watch-history/get": {
-                "post": {
-                    "tags": [
-                        "Watch History"
-                    ],
-                    "summary": "Get watch progress for an item",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "type",
-                                        "id"
-                                    ],
-                                    "properties": {
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "movie",
-                                                "episode"
-                                            ],
-                                            "example": "movie"
-                                        },
-                                        "id": {
-                                            "type": "integer",
-                                            "example": 1
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "Watch progress",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "progress": {
-                                                "type": "integer",
-                                                "example": 300
-                                            },
-                                            "completed": {
-                                                "type": "boolean",
-                                                "example": false
-                                            },
-                                            "last_watched": {
-                                                "type": "string",
-                                                "format": "date-time",
-                                                "nullable": true
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/watch-history/delete": {
-                "post": {
-                    "tags": [
-                        "Watch History"
-                    ],
-                    "summary": "Delete watch history for an item",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "requestBody": {
-                        "required": true,
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "required": [
-                                        "type",
-                                        "id"
-                                    ],
-                                    "properties": {
-                                        "type": {
-                                            "type": "string",
-                                            "enum": [
-                                                "movie",
-                                                "episode"
-                                            ],
-                                            "example": "movie"
-                                        },
-                                        "id": {
-                                            "type": "integer",
-                                            "example": 1
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "Watch history deleted",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "message": {
-                                                "type": "string",
-                                                "example": "History item deleted"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "404": {
-                            "description": "History item not found"
-                        }
-                    }
-                }
-            },
-            "/admin/genres/refresh": {
-                "post": {
-                    "tags": [
-                        "Admin"
-                    ],
-                    "summary": "Refresh genres from TMDb",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "responses": {
-                        "200": {
-                            "description": "Genres updated successfully",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "message": {
-                                                "type": "string",
-                                                "example": "Genres updated successfully"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/admin/movies/refresh-trending": {
-                "post": {
-                    "tags": [
-                        "Admin"
-                    ],
-                    "summary": "Refresh trending movies from TMDb",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "responses": {
-                        "200": {
-                            "description": "Trending movies updated",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "message": {
-                                                "type": "string",
-                                                "example": "Trending movies updated"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/admin/tv-shows/refresh-trending": {
-                "post": {
-                    "tags": [
-                        "Admin"
-                    ],
-                    "summary": "Refresh trending TV shows from TMDb",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "responses": {
-                        "200": {
-                            "description": "Trending TV shows updated",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "message": {
-                                                "type": "string",
-                                                "example": "Trending TV shows updated"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "/admin/movies/refresh-upcoming": {
-                "post": {
-                    "tags": [
-                        "Admin"
-                    ],
-                    "summary": "Refresh upcoming movies from TMDb",
-                    "security": [
-                        {
-                            "bearerAuth": []
-                        }
-                    ],
-                    "responses": {
-                        "200": {
-                            "description": "Upcoming movies updated",
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "message": {
-                                                "type": "string",
-                                                "example": "Upcoming movies updated"
                                             }
                                         }
                                     }
